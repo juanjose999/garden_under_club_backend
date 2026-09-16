@@ -25,9 +25,6 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        System.out.println("Security Filter Chain custom executed");
-
         http
                 .cors(cors -> {}).csrf(csrd->csrd.disable())
            .authorizeHttpRequests(auth -> auth

@@ -42,9 +42,7 @@ public class Usuario  {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Ticket> listaTickets;
-
     private String role;
-
 
 
 }

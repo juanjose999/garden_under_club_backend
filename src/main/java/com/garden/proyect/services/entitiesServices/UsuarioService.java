@@ -37,18 +37,17 @@ public class UsuarioService {
         usuario.setPassword(passwordEncoder.encode(signupDto.password()));
         usuario.setTelefono(signupDto.telefono());
         usuario.setDocumento(signupDto.documento());
+        usuario.setActivo(true);
         usuario.setRole("ROLE_USER");
 
-
         Usuario savedUser = usuarioRepository.save(usuario);
-
+        System.out.println("hola aqui user"+savedUser.toString());
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(usuario.getEmail());
         return authService.signup(userDetails, savedUser);
     }
 
     public UsuarioResponseDto findByToken(String token) {
         String email = jwtService.extractUsername(token.substring(7));
-        System.out.println("emailC: " + email);
         Optional<Usuario> u = usuarioRepository.findByEmail(email);
 
         return UsuarioMapper.toDto(u.get());
@@ -64,6 +63,7 @@ public class UsuarioService {
         usuario.setId(id);
         return usuarioRepository.save(usuario);
     }
+
     public void delete(Long id) {
         usuarioRepository.deleteById(id);
     }
