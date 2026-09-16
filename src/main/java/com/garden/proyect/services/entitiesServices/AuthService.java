@@ -61,6 +61,7 @@ public class AuthService {
             if (token == null) {
                 throw new UsernameNotFoundException("Error to create token");
             }
+
             Optional<Usuario> usuario = usuarioRepository.findByEmail(loginDto.email());
             System.out.println("usuario encontado"+ usuario.toString() + usuario.get().toString());
 

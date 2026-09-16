@@ -13,7 +13,10 @@ public class UsuarioMapper {
                 usuario.getEmail(),
                 usuario.getTelefono(),
                 usuario.getDocumento(),
-                usuario.getActivo()
+                usuario.getActivo(),
+                usuario.getRole(),
+                usuario.getFechaRegistro(),
+                usuario.getFechaActualizacion()
         );
     }
 
